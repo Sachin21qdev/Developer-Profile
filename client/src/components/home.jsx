@@ -1,6 +1,6 @@
 import Developers from '../components/Developers';
 import React, { useState,useEffect} from 'react';
-import Form from '../components/Form';
+//import Form from '../components/Form';
 import Head from '../components/Header';
 import SearchIcon from '../Images_Icons/Profile/search-24px.svg';
 import axios from "axios";
@@ -62,9 +62,11 @@ function Home(props) {
         </div>
       <Developers developers={developers}/>
       <hr></hr>
-      <p>Could not find what you are looking for ?</p>      
-      <button onClick={() => {HandleClick(true)}} className='addDevBtn'>Add developer Info</button>
-      {isAddDevClicked && <Form  DeveloperAdded={DeveloperAdded}/>}      
+      <p>Could not find what you are looking for ?</p>  
+      <Link to = '/formPage'>
+        <button onClick={() => {HandleClick(true)}} className='addDevBtn'>Add developer Info</button>    
+      </Link>    
+      
     </React.Fragment>
   )
 }

@@ -1,5 +1,5 @@
-const mangoose = require('mongoose');
-const {Schema} = mangoose;
+const mongoose = require('mongoose');
+const {Schema} = mongoose;
 
 const developerInfoSchema = new Schema({
     id : String,
@@ -19,4 +19,4 @@ const developerInfoSchema = new Schema({
     repos : Array
 })
 
-module.exports = mangoose.model('developerInfo',developerInfoSchema);
+module.exports = mongoose.model('developerInfo',developerInfoSchema);
