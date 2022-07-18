@@ -67,6 +67,7 @@ function DevInfo() {
                     <div className='items'><p><img src={Location} />{location}</p></div>
                     <div className='items'><p><img src={Company} />{company}</p></div>
                     <div className='items'><p><img src={Link} />{blog}</p></div>
+                    <div className='delete_button'><button>Delete Profile</button></div>
 
                 </div>
             </div>

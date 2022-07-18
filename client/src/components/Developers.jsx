@@ -7,7 +7,6 @@ import Arrow from '../Images_Icons/Profile/north_east-24px.svg';
 function Developers(props) {
     
     const navigate = useNavigate();
-
     const developers = props.developers
 
 

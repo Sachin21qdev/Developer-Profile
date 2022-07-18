@@ -1,10 +1,10 @@
 import Developers from '../components/Developers';
 import React, { useState,useEffect} from 'react';
-//import Form from '../components/Form';
+import Form from '../components/Form';
 import Head from '../components/Header';
 import SearchIcon from '../Images_Icons/Profile/search-24px.svg';
 import axios from "axios";
-import { Link } from 'react-router-dom';
+
 
 function Home(props) {
   const [developers,setDevelopers] = useState([]);
@@ -16,6 +16,9 @@ function Home(props) {
   }
   const HandleClick = (status) => {
     setIsAddDevClicked(status);
+    setShow(status);
+    document.querySelector(".homeBody").style.opacity = 0.2;
+
   }
 
   const WordMatch = (event) => {
@@ -48,25 +51,30 @@ function Home(props) {
 //<button onClick={() => {HandleClick(true)}} className='addDevBtn'>Add developer Info</button>
 //{isAddDevClicked && <Form  DeveloperAdded={DeveloperAdded}/>}
 //<Form  DeveloperAdded={DeveloperAdded}/>
+//DeveloperAdded={DeveloperAdded} HandleClick={HandleClick}
   const[isAddDevClicked, setIsAddDevClicked] = useState(false);
+  const[show, setShow] = useState(false);
   return (
       <React.Fragment>
-        <Head />
-        <div className='explore'>
-          <h3>Explore Developer Profiles</h3>
+        <div>
+          <div class = 'homeBody'>
+            <Head />
+            <div className='explore'>
+              <h3>Explore Developer Profiles</h3>
+              <hr></hr>
+            </div>
+            <div className='search'>
+              <input type='text' className='searchBox' placeholder='Search For Developer' value={searchWord} onChange={(event) => {WordMatch(event)}}/>
+              <button className='searchBtn' onClick={(event) => {WordMatch(event)}} ><img src={SearchIcon} alt="search" /></button> 
+            </div>
+          <Developers developers={developers}/>
           <hr></hr>
+          <p>Could not find what you are looking for ?</p>  
+          <button onClick={() => {HandleClick(true)}} className='addDevBtn'>Add developer Info</button>
         </div>
-        <div className='search'>
-          <input type='text' className='searchBox' placeholder='Search For Developer' value={searchWord} onChange={(event) => {WordMatch(event)}}/>
-          <button className='searchBtn' onClick={(event) => {WordMatch(event)}} ><img src={SearchIcon} alt="search" /></button> 
-        </div>
-      <Developers developers={developers}/>
-      <hr></hr>
-      <p>Could not find what you are looking for ?</p>  
-      <Link to = '/formPage'>
-        <button onClick={() => {HandleClick(true)}} className='addDevBtn'>Add developer Info</button>    
-      </Link>    
-      
+        {isAddDevClicked && <Form show = {show} />} 
+      </div>
+
     </React.Fragment>
   )
 }

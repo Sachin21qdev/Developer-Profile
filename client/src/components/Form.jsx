@@ -6,10 +6,9 @@ import HackerRankIcon from '../Images_Icons/Icon/iconfinder_160_Hackerrank_logo_
 import MediumIcon from '../Images_Icons/Icon/iconfinder_Circled_Medium_svg5_5279113.png';
 import TwitterIcon from '../Images_Icons/Icon/iconfinder_2018_social_media_popular_app_logo_twitter_3225183.png';
 import axios from "axios";
+import {useNavigate} from 'react-router-dom';
 function Form(props){
-    const DeveloperAdded = props.DeveloperAdded;
     //const HandleClick = props.HandleClick;
-    
     const [GithubId, setGitId] = useState("");
     const [LinkedinId, setLinkedinId] =useState("");
     const [CodechefId, setCodechefId] = useState("");
@@ -17,6 +16,7 @@ function Form(props){
     const [TwitterId, setTwitterId] = useState("");
     const [MediumId, setMediumId] = useState("");
     const [isPostReqComplete, setPostReqComplete] = useState(false);
+    const navigate  = useNavigate();
     const ClearFormData = () => {
         setGitId('');
         setHackerrankId('');
@@ -28,6 +28,9 @@ function Form(props){
     useEffect(() => {
         ClearFormData();
     },[])
+    if(!props.show){
+        return null;
+    }
     const HandleSubmit = async(e) => {
         console.log("submit");
         e.preventDefault();
@@ -40,17 +43,22 @@ function Form(props){
             "medium_id": MediumId
         }
         //console.log(data);
+        // {navigate('/')}
         try {
             const response = await axios.post("http://localhost:3001/api/developers/", 
                data
             );
             console.log(response);
             setPostReqComplete(true)
-            //const id = response.data;
-            DeveloperAdded();
+           
+            
         } catch (error) {
             console.log(error);
+            return (
+                <h1>Invalid Username</h1>
+            )
         }
+        
         
     }   
     /*
@@ -61,60 +69,65 @@ function Form(props){
     if(isPostReqComplete){
         return (
             <h1>Form Submitted</h1>
+            
         )
     }
     return (
         <form className="devAddform" >
-        
+            <div className='formHeader'>
+                <p>Add developer profile</p>
+                <br></br>
+                <hr></hr>
+            </div>
             <div className='item'>
-            <label htmlFor='gitin'>
+            <label htmlFor='item_input'>
             <img src={GithubIcon} alt='github' id='giticon' />
                 Github <span className='star'>*</span>
             </label>
             <br/>
-             <input type='text' className='gitin' value={GithubId} onChange = {(event) => setGitId(event.target.value)} />
+             <input type='text' className='item_input' value={GithubId} onChange = {(event) => setGitId(event.target.value)} />
           </div>
     
           <div className='item'>
-            <label htmlFor='linkedin'>
+            <label htmlFor='item_input'>
                 <img src={LinkedInIcon} alt='linkedin' id='linkedicon'  />
                 Linkedin 
             </label >
             <br />
           
-            <input type='text' className='linkedin' value={LinkedinId} onChange = {(event) => setLinkedinId(event.target.value)} />
+            <input type='text' className='item_input' value={LinkedinId} onChange = {(event) => setLinkedinId(event.target.value)} />
           </div>
           <div className='item'> 
-            <label htmlFor='codechefin'  >
+            <label htmlFor='item_input'  >
                 <img src={CodechefIcon} alt='codechef' id='codecheficon' />
                 Codechef
             </label >
             <br />
-            <input type='text' className='codechefin' value={CodechefId} onChange = {(event) => setCodechefId(event.target.value)} />
+            <input type='text' className='item_input' value={CodechefId} onChange = {(event) => setCodechefId(event.target.value)} />
           </div>
           <div className='item'>
-            <label htmlFor='hackerin'>
+            <label htmlFor='item_input'>
                 <img src={HackerRankIcon} alt='hackerrank' id='hackericon' />
                 HackerRank
             </label>
             <br />
-            <input type='text' className='hackerin' value={HackerrankId} onChange = {(event) => setHackerrankId(event.target.value)} />
+            <input type='text' className='item_input' value={HackerrankId} onChange = {(event) => setHackerrankId(event.target.value)} />
           </div>
           <div className='item'>
-            <label htmlFor='twiterin'>
+            <label htmlFor='item_input'>
                 <img src={TwitterIcon} alt='twitter' id='twitericon' />
                 Twitter
             </label>
             <br/>
-            <input type='text' className='twiterin' value={TwitterId} onChange = {(event) => setTwitterId(event.target.value)} />
+            <input type='text' className='item_input' value={TwitterId} onChange = {(event) => setTwitterId(event.target.value)} />
           </div>
           <div className='item'>
-            <label htmlFor='mediumin'>
+            <label htmlFor='item_input'>
                 <img src={MediumIcon} alt='medium' id='mediumicon' />
                 Medium
             </label>
             <br />
-          <input type='text' className='mediumin' value={MediumId} onChange = {(event) => setMediumId(event.target.value) }/>
+          <input type='text' className='item_input' value={MediumId} onChange = {(event) => setMediumId(event.target.value) }/>
         </div>
           <button id={'devformsubmit'} type='submit' onClick={HandleSubmit} >Submit</button>
           <button id={'devformcancel'} onClick={ClearFormData}> Cancel </button>

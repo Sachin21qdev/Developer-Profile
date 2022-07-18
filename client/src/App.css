@@ -46,14 +46,15 @@
 }
 .header .item img{
 
-  height: 15em;
-  width: 15em;
+  height: 25em;
+  width: 25em;
   margin-top: 50px
 }
 
 .header .item h3{
-  margin: 50px;
-  font-size: 2em;
+  margin-top: 15%;
+  margin-left: 5%;
+  font-size: 50px;
   color: white;
   font-family: "Nunito Sans", sans-serif;
 }
@@ -83,6 +84,7 @@
   background-color: #d0cde1;
   border-radius: 5px;
   border: 0;
+  
 }
 
 .searchbox{
@@ -152,6 +154,10 @@
   margin-top: 10px;
   margin-right: 10px;
 }
+.item_input{
+  height:40px;
+  border-radius: 10px;
+}
 
 .addDevBtn{
 
@@ -163,6 +169,7 @@
   color: white;
   text-align: center;
   border-radius: 5px;
+  cursor: pointer;
 }
 
 p {
@@ -172,16 +179,19 @@ p {
   font-family: "Nunito Sans", sans-serif;
 }
 
+
 .devAddform{
   position: absolute;
-  text-align: center;
   background-color: #ecebf1;
-  top: 450px;
+  top: 300px;
+  text-align: center;
   margin-left: 10%;
   padding: 10px;
-  border-radius: 10px;
-  height: 55%;
+  border-radius: 20px;
+  height: 100%;
   width: 80%;
+  
+
 }
 .devAddform img {
   height: 1em;
@@ -189,13 +199,15 @@ p {
 }
 .devAddform button{
   border : 0;
-  height: 1.5em;
+  height: 2.5em;
   width: 22%;
   margin : 2%;
   background-color: #7c639f;
   color: white;
   text-align: center;
-  border-radius: 5px;
+  border-radius: 10px;
+  cursor: pointer;
+  margin-left: 4%;
 }
 
 .devAddform .item{
@@ -207,6 +219,14 @@ p {
 
 .devAddform label{
   margin: 2px;
+}
+
+.formHeader p{
+  color: black;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 600;
+  font-size: 32px;
+
 }
 
 .star{
@@ -244,6 +264,7 @@ p {
 .repos{
   font-family: "Nunito Sans",sans-serif;
   color: #3f3d56;
+  margin-left: 1%;
   
 }
 .repos h1{
