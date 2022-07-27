@@ -11,7 +11,7 @@ import GmailIcon from '../Images_Icons/Profile/email-24px.svg';
 import Location from '../Images_Icons/Profile/location_on-24px.svg';
 import Company from '../Images_Icons/Profile/business-24px.svg';
 import Link from '../Images_Icons/Profile/insert_link-24px (1).svg';
-import axios from "axios";
+import axiosInstance from "../config";
 
 function DevInfo() {
 
@@ -22,7 +22,7 @@ function DevInfo() {
 
     const GetData = () => {
 
-        axios.get(`http://localhost:3001/api/developers/${devId}`).then(
+        axiosInstance.get(`https://sachin-developer-profile.herokuapp.com/api/developers/${devId}`).then(
             (response) => {return response.data}
         ).then(
             (data) => {setDeveloperData(data)}
@@ -37,7 +37,7 @@ function DevInfo() {
         GetData();
     },[])
     const deleteData = () => {
-        axios.delete(`http://localhost:3001/api/developers/${devId}`).then
+        axiosInstance.delete(`https://sachin-developer-profile.herokuapp.com/api/developers/${devId}`).then
             (response =>{return response.data})
             .catch(error => {
                 // element.parentElement.innerHTML = `Error: ${error.message}`;

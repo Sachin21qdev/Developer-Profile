@@ -5,7 +5,7 @@ import CodechefIcon from '../Images_Icons/Icon/codechef-1324440139527402917_32.p
 import HackerRankIcon from '../Images_Icons/Icon/iconfinder_160_Hackerrank_logo_logos_4373234.png';
 import MediumIcon from '../Images_Icons/Icon/iconfinder_Circled_Medium_svg5_5279113.png';
 import TwitterIcon from '../Images_Icons/Icon/iconfinder_2018_social_media_popular_app_logo_twitter_3225183.png';
-import axios from "axios";
+import axiosInstance from "../config";
 import {useNavigate} from 'react-router-dom';
 function Form(props){
     //const HandleClick = props.HandleClick;
@@ -49,7 +49,7 @@ function Form(props){
         }
         const gitStatus =  async()=>{
             try{
-               await axios.get(`https://api.github.com/users/${GithubId}`).then(response=>{return response.data});
+               await axiosInstance.get(`https://api.github.com/users/${GithubId}`).then(response=>{return response.data});
             }
             catch{
                 alert('Invalid GithubId');
@@ -58,7 +58,7 @@ function Form(props){
         } 
         try {
             gitStatus();
-            const response = await axios.post("http://localhost:3001/api/developers/", 
+            const response = await axiosInstance.post("https://sachin-developer-profile.herokuapp.com/api/developers/", 
                data
             );
             console.log(response);

@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import Form from "../components/Form";
 import Head from "../components/Header";
 import SearchIcon from "../Images_Icons/Profile/search-24px.svg";
-import axios from "axios";
+import axiosInstance from "../config";
 
 function Home(props) {
   const [developers, setDevelopers] = useState([]);
@@ -34,8 +34,8 @@ function Home(props) {
     }
   };
   const fetchAvailableDevelopers = () => {
-    axios
-      .get("http://localhost:3001/api/developers/")
+    axiosInstance
+      .get("https://sachin-developer-profile.herokuapp.com/api/developers/")
       .then((response) => {
         return response.data;
       })
