@@ -2,7 +2,7 @@ const { response } = require('express');
 const express = require('express');
 const axios = require('axios');
 const axiosInstance = axios.create({
-  baseURL : "https://sachin-developer-profile.herokuapp.com/api/developers/"
+  baseURL : "https://sachin-developer-profile.herokuapp.com/api/developers"
 })
 //axiosInstance = require('../../client/src/config')
 const developerInfo = require('../../models/devInfoModel');
