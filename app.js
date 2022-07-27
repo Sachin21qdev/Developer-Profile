@@ -12,11 +12,11 @@ app.use(cors());
 connection.once('open', () => console.log('DB Connected'))
 connection.on('error', () => console.log('Error'))
 
-app.use(express.static(path.join(__dirname, "/cient/build")));
+// app.use(express.static(path.join(__dirname, "/cient/build")));
 
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, '/client/build', 'index.html'));
-});
+// app.get('*', (req, res) => {
+//   res.sendFile(path.join(__dirname, '/client/build', 'index.html'));
+// });
 app.use('/api/developers', developers);
 app.listen(port, () => {
   console.log(`Server listening at port: ${port}`)

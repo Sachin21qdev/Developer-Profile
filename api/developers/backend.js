@@ -1,6 +1,10 @@
 const { response } = require('express');
 const express = require('express');
 const axios = require('axios');
+const axiosInstance = axios.create({
+  baseURL : "https://sachin-developer-profile.herokuapp.com/api/developers/"
+})
+//axiosInstance = require('../../client/src/config')
 const developerInfo = require('../../models/devInfoModel');
 const app = express();
 const router = express.Router();
@@ -29,8 +33,8 @@ router.get("/", (req, res) => {
 
 router.post("/",(req,res)=>{
   const github_id = req.body.github_id;
-  const gitInfo =   axios.get(`https://api.github.com/users/${github_id}`).then(response=>response.data);
-  const reposInfo = axios.get(`https://api.github.com/users/${github_id}/repos`).then(response=>response.data);
+  const gitInfo =   axiosInstance.get(`https://api.github.com/users/${github_id}`).then(response=>response.data);
+  const reposInfo = axiosInstance.get(`https://api.github.com/users/${github_id}/repos`).then(response=>response.data);
 
   const send_request = async function(){
     try{
