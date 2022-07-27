@@ -36,7 +36,18 @@ function DevInfo() {
     useEffect(() => {
         GetData();
     },[])
-
+    const deleteData = () => {
+        axios.delete(`http://localhost:3001/api/developers/${devId}`).then
+            (response =>{return response.data})
+            .catch(error => {
+                // element.parentElement.innerHTML = `Error: ${error.message}`;
+                console.error('There was an error!', error);
+        });
+        setTimeout(()=>{
+            window.location.href = "/"
+            
+        },2000); 
+    };
 
     if(dataAvailable){
 
@@ -46,6 +57,7 @@ function DevInfo() {
         <div className='developerInfo'>
             <div className='devInfoHeader'>
                <div className='item'><h2>The Developer Profile</h2> </div>
+               <div className='item' id='deleteButton'><h4 onClick = {deleteData}>Delete Profile</h4></div>
                 <div className='item' onClick={() => {navigate('/')}}><button><h2>All Developers</h2></button></div>
             </div>
             <div className='about'>
@@ -67,10 +79,9 @@ function DevInfo() {
                     <div className='items'><p><img src={Location} />{location}</p></div>
                     <div className='items'><p><img src={Company} />{company}</p></div>
                     <div className='items'><p><img src={Link} />{blog}</p></div>
-                    <div className='delete_button'><button>Delete Profile</button></div>
-
                 </div>
             </div>
+            
             
             <div className='repos'>
                 <h1>Github Repositories</h1><hr />

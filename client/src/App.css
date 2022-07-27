@@ -190,6 +190,7 @@ p {
   border-radius: 20px;
   height: 100%;
   width: 80%;
+  z-index: 1;
   
 
 }
@@ -264,6 +265,7 @@ p {
 .repos{
   font-family: "Nunito Sans",sans-serif;
   color: #3f3d56;
+  /* align-items: center; */
   margin-left: 1%;
   
 }
@@ -273,6 +275,9 @@ p {
   sans-serif;
   color: #3f3d56;
 }
+.repo h3{
+  text-align: center;
+}
 
 .developerInfo .devInfoHeader{
   display: flex;
@@ -281,6 +286,17 @@ p {
   /* grid-template-columns:1fr 1fr; */
   background-color: #3f3d56;
   color: white;
+  font-family: "Nunito Sans",
+  sans-serif;
+
+}
+.developerInfo .devInfoHeader h4{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  /* grid-template-columns:1fr 1fr; */
+  background-color: #3f3d56;
+  color: red;
   font-family: "Nunito Sans",
   sans-serif;
 
@@ -328,4 +344,13 @@ footer p {
   color: white;
   text-align: center;
   border-radius: 5px;
+}
+#deleteButton{
+  align-items: center ;
+  cursor: pointer;
+
+}
+#returnMessage{
+  color : brown;
+  
 }

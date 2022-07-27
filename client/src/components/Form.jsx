@@ -31,9 +31,14 @@ function Form(props){
     if(!props.show){
         return null;
     }
+    
     const HandleSubmit = async(e) => {
         console.log("submit");
         e.preventDefault();
+        if(GithubId === ''){
+            alert('Please provide Github ID');
+            return;
+        }
         let data = {
             "github_id": GithubId,
             "linkedin_id": LinkedinId,
@@ -42,15 +47,22 @@ function Form(props){
             "twitter_id": TwitterId,
             "medium_id": MediumId
         }
-        //console.log(data);
-        // {navigate('/')}
+        const gitStatus =  async()=>{
+            try{
+               await axios.get(`https://api.github.com/users/${GithubId}`).then(response=>{return response.data});
+            }
+            catch{
+                alert('Invalid GithubId');
+                return;
+            }
+        } 
         try {
+            gitStatus();
             const response = await axios.post("http://localhost:3001/api/developers/", 
                data
             );
             console.log(response);
-            setPostReqComplete(true)
-           
+            setPostReqComplete(true) 
             
         } catch (error) {
             console.log(error);
@@ -58,17 +70,22 @@ function Form(props){
                 <h1>Invalid Username</h1>
             )
         }
+        // navigate("//devinfo/Sachin21qdev", { replace: true })
+        setTimeout(()=>{
+            window.location.href = "/"
+            
+        },2000); 
+        
         
         
     }   
-    /*
-    if(GithubId === ''){
-        alert('Please provide Github ID');
-        return;
-    }*/
+    
     if(isPostReqComplete){
         return (
-            <h1>Form Submitted</h1>
+            <div>
+                <h1>Form Submitted</h1>  
+                <p id="returnMessage">Returning to home page ...</p>
+            </div>
             
         )
     }
