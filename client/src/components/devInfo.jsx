@@ -72,7 +72,7 @@ function DevInfo() {
                     <a href={`https://www.linkedin.com/in/${linkedin_id}`}><img src={LinkedInIcon} alt='linkedin' /></a>
                     <a href={`https://medium.com/${medium_id}`}><img src={MediumIcon} alt='medium' /></a>
                     <a href={`https://twitter.com/${twitter_id}`}><img src={TwitterIcon} alt='twitter' /></a>
-                    <a href={`https://gmail.com/${email}`}><img src={GmailIcon} alt='mail' /></a>
+                    <a href={`https://mail.google.com/mail/${email}`}><img src={GmailIcon} alt='mail' /></a>
                 </div>
                 <div className='subContent'>
 
