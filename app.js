@@ -1,5 +1,6 @@
 const express = require('express');
 var cors = require('cors');
+let path = require('path');
 const connection = require('./config/config')
 const app = express();
 const port = process.env.PORT || 3001;
