@@ -5,15 +5,10 @@ import Home from '../src/components/home';
 import Error from '../src/components/Error';
 import Footer from '../src/components/Footer';
 import Form from '../src/components/Form';
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-const root = ReactDOM.createRoot(document.getElementById('root'));
-  // root.render(
-  //     <home />
-  // );
-  root.render (
-    <React.StrictMode>
-      <BrowserRouter>
+function App() {
+
+  return (
+    <BrowserRouter>
       <Routes>
         <Route path='/' element={<Home/>}></Route>
         <Route path='devinfo/:devId' element={<DevInfo ></DevInfo>} />
@@ -22,6 +17,7 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
       </Routes>
       <Footer />
     </BrowserRouter>
-    </React.StrictMode>
   );
+}
 
+export default App;
